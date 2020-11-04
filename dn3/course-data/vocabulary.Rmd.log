@@ -1,0 +1,38 @@
+
+
+processing file: vocabulary.Rmd
+
+── Column specification ────────────────────────────────────────────────────────────────────────────────────────────────────
+cols(
+  X1 = col_character(),
+  X2 = col_character()
+)
+
+output file: vocabulary.knit.md
+
+
+Output created: vocabulary.html
+
+
+processing file: vocabulary.Rmd
+
+-- Column specification ----------------------------------------------------------------------------------------------------
+cols(
+  X1 = col_character(),
+  X2 = col_character()
+)
+
+output file: vocabulary.knit.md
+
+
+Output created: vocabulary.pdf
+Warning messages:
+1: In styling_latex_scale_down(out, table_info) :
+  Longtable cannot be resized.
+2: Package etex Warning: Extended allocation already in use.
+(etex)                etex.sty code will not be used.
+(etex)                To force etex package to load, add
+(etex)                \RequirePackage{etex}
+(etex)                at the start of the document.
+Package ifplatform Warning: 
+    shell escape is disabled, so I can only detect \ifwindows. 

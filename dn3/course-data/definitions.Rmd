@@ -1,0 +1,83 @@
+---
+author: "Adrien Méli"
+title: "Definitions seen in class"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+bibliography: /home/adrien/github/dotfiles/tex/biblio.bib
+biblio-style: "apalike"
+always_allow_html: true
+link-citations: true
+numbersections: true
+fontsize: 10pt
+output:
+  bookdown::html_document2:
+    toc: true
+    toc_float: true
+    toc_depth: 1
+    number_sections: false
+    theme: spacelab
+    # I like hyphenated themes
+    #-default, cerulean, journal, -flatly, darkly, readable, -spacelab, united, -cosmo, lumen, paper, -sandstone, simplex, and -yeti
+    css: [/home/adrien/github/dotfiles/rmd/columns.css]
+    #css: [css/one-column.css, "https://use.fontawesome.com/releases/v5.7.2/css/all.css"]
+    highlight: haddock
+    fig_width: 4
+    fig_height: 3
+    fig_caption: true
+  bookdown::pdf_document2:
+    keep_tex: false
+    toc: false
+    toc_depth: 1
+    number_sections: true
+    #fig_width: 3
+    #fig_height: 1
+    fig_caption: true
+    fig_crop: true
+    df_print: kable
+    highlight: tango
+    pandoc_args: ["--extract-media","article/."]
+    includes:
+      in_header: /home/adrien/github/dotfiles/rmd/rmd-preamble2.tex
+      #before_body: /home/adrien/github/dotfiles/rmd/before_body.tex
+      #after_body: /home/adrien/github/dotfiles/rmd/after_body.tex
+fontawesome: yes
+---
+
+<style>
+body {
+text-align: justify;
+font-size: 16px;
+}
+</style>
+
+
+```{r setup-voc, include = FALSE}
+source('/home/adrien/github/dotfiles/r/rmarkdown-template.R')
+
+```
+
+
+`r ifpdf("", "[*(Download PDF)*](definitions)")`
+
+
+
+
+# Dictionary definitions of words seen in class
+
+```{r deftable, echo=FALSE, results='asis', message = FALSE, warning=FALSE }
+
+df1 <- read_delim("definitions.csv", col_names=FALSE,delim=";",quoted_na=FALSE,na=character())
+colnames(df1)=c("Français", "English")
+
+if (knitr::is_latex_output()) {
+  knitr::kable(df1, "latex", booktabs = T, longtable = T) %>%
+    #     collapse_rows(columns = 1:2, valign = "top",latex_hline = "none") %>%
+    kable_styling(latex_options = c("scale_down","striped"),position = "center")
+
+} else if (knitr::is_html_output()) {
+  knitr::kable(df1,  captions=NULL) %>%
+    kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+    #     collapse_rows(columns = 1:2, valign = "top")
+
+} 
+```
+
